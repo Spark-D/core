@@ -13,7 +13,8 @@ public class OrderServiceImpl implements OrderService {
     //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
     //    정액 -> 정률 바꾸려면 orderserviceImple 소스를 바꿔야해
     //    추상에 의존하지 않고 구체에 의존하고있다  OCP 위반, DIP 위반
-    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+//    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+    private DiscountPolicy discountPolicy;
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
