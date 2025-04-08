@@ -12,7 +12,7 @@ public class MemberApp {
 //        AppConfig appConfig = new AppConfig();
 //        MemberService memberService = appConfig.memberService();
 
-        //ApplicationContext = 스프링컨테이너 이고, @Configuration 어노테이션이 붙은 AppConfig를 설정정보로 사용한다 
+        //ApplicationContext = 스프링컨테이너(인터페이스) 이고, @Configuration 어노테이션이 붙은 AppConfig를 설정정보로 사용한다
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         //AppConfig에 @Bean이 붙은 메서드의 명을 스프링 빈의 이름으로 사용한다 (스프링빈)
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
