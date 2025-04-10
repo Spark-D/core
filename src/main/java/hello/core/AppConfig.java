@@ -20,21 +20,24 @@ public class AppConfig {
     //스프링컨테이너에 빈을 등록하는 행위
     @Bean
     public MemberService memberService() {
+        System.out.println("call memberService");
         return new MemberServiceImpl(memberRepository()); //생성자 주입
     }
 
     @Bean
-    public static MemberRepository memberRepository() {
+    public MemberRepository memberRepository() {
+        System.out.println("call memberRepository");
         return new MemberMemoryRepository();
     }
 
     @Bean
     public OrderService orderService(){
+        System.out.println("call orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
     @Bean
-    public static DiscountPolicy discountPolicy() {
+    public DiscountPolicy discountPolicy() {
 //        return new FixDiscountPolicy();
         return new RateDiscountPolicy();
     }

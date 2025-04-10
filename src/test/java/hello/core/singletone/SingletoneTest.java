@@ -1,7 +1,11 @@
 package hello.core.singletone;
 
 import hello.core.AppConfig;
+import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
+import hello.core.member.MemberServiceImpl;
+import hello.core.order.OrderService;
+import hello.core.order.OrderServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,5 +53,25 @@ public class SingletoneTest {
         System.out.println("memberService2: " + memberService2);
 
         Assertions.assertThat(memberService1).isSameAs(memberService2);
+    }
+
+    @Test
+    @DisplayName("정말 스프링 빈은 싱글톤일까")
+    void singletonTest () {
+        ApplicationContext springContainer = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberServiceImpl memberService = springContainer.getBean("memberService", MemberServiceImpl.class);
+        OrderServiceImpl orderService = springContainer.getBean("orderService", OrderServiceImpl.class);
+        MemberRepository memberRepository = springContainer.getBean("memberRepository", MemberRepository.class);
+
+        MemberRepository memberRepository1 = memberService.getMemberRepository();
+        MemberRepository memberRepository2 = orderService.getMemberRepository();
+
+        System.out.println("memberRepository1: " + memberRepository1);
+        System.out.println("memberRepository2: " + memberRepository2);
+        System.out.println("memberRepository: " + memberRepository);
+
+        Assertions.assertThat(memberRepository).isSameAs(memberRepository1);
+        Assertions.assertThat(memberRepository).isSameAs(memberRepository2);
+
     }
 }
