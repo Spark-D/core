@@ -17,8 +17,8 @@ import org.springframework.context.annotation.FilterType;
 public class AutoAppConfig {
 
     //자동 등록 빈 vs. 수동 등록 빈 이름이 충돌날때 에러발생하지는 않으나, 수동 등록빈이 자동등록빈을 override 한다! 수동이 이김!
-    @Bean(name = "memberMemoryRepository")
-    MemberRepository memberRepository () {
-        return new MemberMemoryRepository();
-    }
+//    @Bean(name = "memberMemoryRepository")
+//    MemberRepository memberRepository () {
+//        return new MemberMemoryRepository();
+//    }
 }
