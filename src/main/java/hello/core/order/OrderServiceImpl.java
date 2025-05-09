@@ -3,10 +3,11 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
 //    private final MemberRepository memberRepository = new MemberMemoryRepository();
@@ -18,11 +19,12 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    @Autowired // 생성자 위에 오토와이어드 해주면 자동 의존관계를 주입 받는다
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+    //lombok @RequiredArgsConstructor 어노테이션으로 교체
+//    @Autowired // 생성자 위에 오토와이어드 해주면 자동 의존관계를 주입 받는다
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
     // interface에만 의존하고있다!
 
     @Override
