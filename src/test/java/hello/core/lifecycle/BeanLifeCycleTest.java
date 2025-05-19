@@ -16,7 +16,7 @@ public class BeanLifeCycleTest {
     }
 
     @Configuration
-    static class LifeCycleConfig {
+    static class LifeCycleConfig { // destroyMethod는 "clos"또는 "shutdown" 이름의 메서드를 종료메서명으로 추론해서 디폴트 요청해준다
         @Bean(initMethod = "init", destroyMethod = "close")
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
