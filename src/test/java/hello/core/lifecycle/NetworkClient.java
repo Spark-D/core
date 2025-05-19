@@ -1,5 +1,7 @@
 package hello.core.lifecycle;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
@@ -32,12 +34,14 @@ public class NetworkClient {
     }
 
     //스프링이 의존관계를 끝내고나서 호출됨
+    @PostConstruct
     public void init() {
         System.out.println("init 호출");
         connect();
         call("초기화 연결 메시지");
     }
 
+    @PreDestroy
     public void close() {
         System.out.println("close 호출");
         disconnect();
